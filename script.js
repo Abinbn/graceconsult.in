@@ -75,14 +75,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Form submission handler
-document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    // Add your form submission logic here
-    alert('Thank you for your message. We will get back to you soon!');
-    this.reset();
-});
-
 // Animate progress bars when in view
 const progressBars = document.querySelectorAll('.progress');
 const observer = new IntersectionObserver((entries) => {
