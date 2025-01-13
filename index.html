@@ -361,23 +361,23 @@
                 <form class="contact-form" id="contactForm" novalidate>
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" required>
+        <input type="text" id="entry.147493436" name="name" required>
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="entry.1187852822" name="email" required>
     </div>
     <div class="form-group">
         <label for="phone">Phone</label>
-        <input type="tel" id="phone" name="phone">
+        <input type="tel" id="entry.557875483" name="phone">
     </div>
     <div class="form-group">
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required>
+        <input type="text" id="entry.1688493126" name="subject" required>
     </div>
     <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
+        <textarea id="entry.1696295627" name="message" required></textarea>
     </div>
     <button type="submit" class="submit-btn">Send Message</button>
 </form>
@@ -433,46 +433,46 @@
 
 
 <script>
-    document.getElementById('contactForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
+    document.getElementById("contactForm").addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-    const form = this;
-    const formData = new FormData(form);
-    const submitButton = form.querySelector('.submit-btn');
-
-    try {
+        const form = this;
+        const formData = new FormData(form);
+        const submitButton = form.querySelector('.submit-btn');
         submitButton.disabled = true;
         submitButton.textContent = 'Sending...';
 
-        const response = await fetch('contact-handler.php', {
-            method: 'POST',
-            body: formData
-        });
+        // Google Form URL and field entries mapping
+        const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSfd44-UJS06JFGXPa3pKuT9hqwyvmMCpCgAnyyRdrIR1bcBBQ/formResponse";
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const data = {
+            "entry.147493436": formData.get("name"),
+            "entry.1187852822": formData.get("email"),
+            "entry.557875483": formData.get("phone"),
+            "entry.1688493126": formData.get("subject"),
+            "entry.1696295627": formData.get("message")
+        };
 
-        const result = await response.json();
+        try {
+            // Encode form data as query parameters
+            const queryString = new URLSearchParams(data).toString();
+            const response = await fetch(`${googleFormURL}?${queryString}`, {
+                method: "POST",
+                mode: "no-cors"
+            });
 
-        if (result.success) {
-            alert('Message sent successfully!');
+            // Simulate success feedback since Google Form doesn't return response on no-cors
+            alert("Message sent successfully!");
             form.reset();
-        } else {
-            throw new Error(result.error || 'Failed to send message');
+        } catch (error) {
+            console.error("Error submitting the form:", error);
+            alert("Failed to send the message. Please try again.");
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Send Message';
         }
-    } catch (error) {
-        console.error('Form submission error:', error);
-        alert('Failed to send the message. Please try again.');
-    } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Send Message';
-    }
-});
+    });
 </script>
-
-
-
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
