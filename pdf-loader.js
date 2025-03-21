@@ -76,25 +76,25 @@ const pdfFiles = [
         title: "VIJAY ANAND FIRST FLOOR.pdf",
         path: "VIJAY ANAND FIRST FLOOR.pdf",
         size: "205 kB",
-        pages: "2 Page"
+        pages: "1 Page"
     },
     {
         title: "VIJAY ANAND SECOND FLOOR.pdf",
         path: "VIJAY ANAND SECOND FLOOR.pdf",
         size: "205 kB",
-        pages: "2 Page"
+        pages: "1 Page"
     },
     {
         title: "VIJAY ANAND STILT FLOOR.pdf",
         path: "VIJAY ANAND STILT FLOOR.pdf",
         size: "190 kB",
-        pages: "2 Page"
+        pages: "1 Page"
     },
     {
         title: "VIJAY ANAND THIRD FLOOR.pdf",
         path: "VIJAY ANAND THIRD FLOOR.pdf",
         size: "201 kB",
-        pages: "2 Page"
+        pages: "1 Page"
     },
 ];
 
